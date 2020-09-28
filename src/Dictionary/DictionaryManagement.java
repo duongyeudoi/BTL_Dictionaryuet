@@ -27,7 +27,7 @@ public class DictionaryManagement extends Dictionary {
         Collections.sort(allWords);
     }
 
-    /* public void insertFromFile() {
+     public void insertFromFile() {
         try {
             File file = new File("dictionaries.txt");
             BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -66,7 +66,7 @@ public class DictionaryManagement extends Dictionary {
     }
 //    start   mid     end
 
-    public void addWord() {
+    /*public void addWord() {
         Scanner sc = new Scanner(System.in);
         String word = sc.nextLine();
         String[] wordLine = word.split(" ");

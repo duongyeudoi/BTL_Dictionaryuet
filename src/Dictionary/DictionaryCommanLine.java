@@ -15,18 +15,18 @@ public class DictionaryCommanLine extends DictionaryManagement{
         showAllWords();
 
     }
-    /*public void dictionaryAdvanced() {
+    public void dictionaryAdvanced() {
         insertFromFile();
         showAllWords();
         Scanner sc = new Scanner(System.in);
         String word_target = sc.nextLine();
         dictionaryLookup(word_target);
 
-    }*/
+    }
 
 
     public static void main(String[] args) {
         DictionaryCommanLine testDictionary = new DictionaryCommanLine();
-        testDictionary.dictionaryBasic();
+        testDictionary.dictionaryAdvanced();
     }
 }
