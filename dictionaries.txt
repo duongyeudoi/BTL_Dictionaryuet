@@ -1,0 +1,4 @@
+traditional	truyen thong
+travel	du lich
+dog	cho
+trans	gay
