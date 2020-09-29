@@ -1,1 +1,5 @@
-dog	chotraditional	truyen thongtrans	gaytravel	du lich
+No              English              Vietnamese     
+1               dog                  cho            
+2               traditional          truyen thong   
+3               trans                gay            
+4               travel               du lich        

@@ -3,6 +3,7 @@ import jdk.nashorn.internal.ir.WhileNode;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.nio.Buffer;
 import java.util.*;
 import java.io.*;
 public class DictionaryManagement extends Dictionary {
@@ -64,9 +65,9 @@ public class DictionaryManagement extends Dictionary {
             }
         }
     }
-//    start   mid     end
 
-    /*public void addWord() {
+
+    public void addWord() {
         Scanner sc = new Scanner(System.in);
         String word = sc.nextLine();
         String[] wordLine = word.split(" ");
@@ -103,23 +104,23 @@ public class DictionaryManagement extends Dictionary {
         }
     }
 
+
     public void dictionaryExportToFile() {
+
         try {
-            File myObj = new File("finaldictionary.txt");
-            if (myObj.createNewFile()) {
-                FileWriter myWriter = new FileWriter("finaldictionary.txt");
-                for (int i = 0; i < allWords.size(); i++) {
-                    myWriter.write(allWords.get(i).getWord_target() + "\t" + allWords.get(i).getWord_explain());
-                    myWriter.write('\n');
-                }
-                myWriter.close();
+            FileOutputStream fo = new FileOutputStream("finaldictionary.txt");
+            PrintWriter writer = new PrintWriter(fo);
+            writer.printf("%-15s %-20s %-15s%n", "No", "English", "Vietnamese");
+            for(int i = 0; i < allWords.size(); i++) {
+                writer.printf("%-15d %-20s %-15s%n", (i + 1), allWords.get(i).word_target, allWords.get(i).word_explain);
+
             }
+            writer.close();
+
         } catch (IOException e) {
             e.printStackTrace();
             }
-    } */
-
-
+    }
 
 
 }
