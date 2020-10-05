@@ -1,9 +1,10 @@
 package Dictionary;
 import jdk.nashorn.internal.ir.WhileNode;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.nio.Buffer;
 import java.util.*;
 import java.io.*;
 public class DictionaryManagement extends Dictionary {
@@ -16,7 +17,7 @@ public class DictionaryManagement extends Dictionary {
             String engWord = scanner.nextLine();
             String vieWord = scanner.nextLine();
             Word word = new Word(engWord, vieWord);
-            if (allWords.contains(word) == false) {
+            if (!allWords.contains(word)) {
                 allWords.add(word);
             }
             size--;
@@ -28,42 +29,51 @@ public class DictionaryManagement extends Dictionary {
         Collections.sort(allWords);
     }
 
-     public void insertFromFile() {
+     public static void insertFromFile() {
         try {
             File file = new File("dictionaries.txt");
             BufferedReader reader = new BufferedReader(new FileReader(file));
-            String line = null;
-        while ((line= reader.readLine()) != null) {
-            String[] wordline = line.split("\t");
-            Word word = new Word(wordline[0], wordline[1]);
-            if (allWords.contains(word) == false) {
-                allWords.add(word);
+            String line;
+            while ((line= reader.readLine()) != null) {
+                String[] wordline = line.split("\\:", 2);
+                if (wordline.length == 1) continue;
+                Word word = new Word(wordline[1], wordline[0]);
+                if (!allWords.contains(word)) {
+                    allWords.add(word);
+                }
             }
-        }
         } catch(Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    public void dictionaryLookup(String word_target) {
+    String dictionaryLookup(String word_target) {
         sortDictionary();
-        int start = 0;
-        int end  = allWords.size() - 1;
-
-        while (start <= end) {
-            int mid = (start + end) / 2;
-            Word check = allWords.get(mid);
-            String current = check.getWord_target();
-            int res = current.compareTo(word_target);
-            if (res == 0) {
-                System.out.println(check.getWord_explain());
-                return;
-            } else if (res < 0) {
-                start = mid + 1;
-            } else {
-                end = mid - 1;
+        String result ="";
+        for (Word word: allWords) {
+            if (word.getWord_target().equals(word_target)) {
+                return word.getWord_explain();
             }
         }
+//        int start = 0;
+//        int end  = allWords.size() - 1;
+//
+//        while (start <= end) {
+//            int mid = (start + end) / 2;
+//            Word check = allWords.get(mid);
+//            String current = check.getWord_target();
+//            int res = current.compareTo(word_target);
+//            if (res == 0) {
+//                result = check.getWord_explain();
+//                break;
+//            } else if (res < 0) {
+//                start = mid + 1;
+//            } else {
+//                end = mid - 1;
+//            }
+//        }
+//        System.out.println(result);
+        return result;
     }
 
 
