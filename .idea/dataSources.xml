@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="dict_hh" uuid="f665b0e1-1404-4fbc-9a98-55864691c845">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\DictionaryUET\dict_hh.db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="SQLite - dict_hh.db" uuid="2ca027a6-e40e-442c-9e6f-b03a7094f8de">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:/sqlite/dict_hh.db</jdbc-url>
+    </data-source>
+  </component>
+</project>
