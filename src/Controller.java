@@ -29,26 +29,31 @@ public class Controller extends SQLite {
 
     @FXML
     private Button addButton;
+    @FXML
+    private ListView<String> historyList;
+
+    @FXML
+    private WebView historyMean;
+
+
+    @FXML
+    private Button playWordSound;
 
 
     @FXML
     private ListView<String> listWord;
 
 
-    @FXML
-    private ListView<String> historyList;
+
     @FXML
     private Button Viepronounce;
 
 
-    @FXML
-    private TextArea historyMean;
 
     @FXML
     private Button historyButton;
 
-    @FXML
-    private Button soundButton;
+
 
     @FXML
     private Button playingSound;
@@ -72,6 +77,12 @@ public class Controller extends SQLite {
         wordInput.clear();
     }
 
+
+    @FXML
+    void playWSound() {
+        GoogleAPITextToSpeech play = new GoogleAPITextToSpeech(wordInput.getText());
+
+    }
     @FXML
     void addButtonClicked() {
         insert(addEng.getText(),addVie.getText());
@@ -79,11 +90,7 @@ public class Controller extends SQLite {
         addVie.clear();
 
     }
-    @FXML
-    void playSound(String text) {
-       GoogleAPITextToSpeech play = new GoogleAPITextToSpeech(wordInput.getText());
 
-    }
 
     @FXML
     void handleTranslate() {
@@ -116,6 +123,13 @@ public class Controller extends SQLite {
         ObservableList observableList = listWord.getSelectionModel().getSelectedItems();
         wordInput.setText((String) observableList.get(0));
         handleSearch();
+    }
+    @FXML
+    void getHistoryChosenWord() {
+        ObservableList observableList = historyList.getSelectionModel().getSelectedItems();
+    //    wordInput.setText((String) observableList.get(0));
+        historyMean.getEngine().loadContent(readSpecificRow((String)observableList.get(0)));
+
     }
 
 
