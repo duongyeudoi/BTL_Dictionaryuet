@@ -20,25 +20,9 @@ public class GoogleAPITextToSpeech {
 	 * Constructor
 	 */
 	public GoogleAPITextToSpeech(String text) {
-		
-		//Let's speak in English
+
 		speak(text);
-		
-		//Speak Chinese Fuckers
-		//speak("我可以说你想要的任何语言！");
-		
-		//Let's Speak in Somalian       
-		//speak("Waxaan ku hadli karaa luqad aad rabto!");
-		
-		//Let's Speak in Hindi
-		//speak("मैं चाहता हूं कि कोई भी भाषा बोल सकता हूँ!");
-		
-		//Let's Speak in Polish
-		//speak("Mogę mówić dowolnym językiem, którego chcesz!");
-		
-		//Let's Speak in Persian       ----- This doens't work for some reason i have to figure out ... ;(
-		//speak("من می توانم به هر زبان که می خواهید صحبت کنید!");
-		
+
 	}
 	
 	/**
@@ -61,20 +45,19 @@ public class GoogleAPITextToSpeech {
 				
 			} catch (IOException | JavaLayerException e) {
 				
-				e.printStackTrace(); //Print the exception ( we want to know , not hide below our finger , like many developers do...)
+				e.printStackTrace();
 				
 			}
 		});
 		
-		//We don't want the application to terminate before this Thread terminates
 		thread.setDaemon(false);
 		
-		//Start the Thread
 		thread.start();
-		
+
 	}
 	
 	public static void main(String[] args) {
+
 		GoogleAPITextToSpeech sound = new GoogleAPITextToSpeech("hello");
 	}
 	
