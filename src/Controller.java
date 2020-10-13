@@ -74,7 +74,7 @@ public class Controller extends SQLite {
         System.out.println(readSpecificRow(wordInput.getText()));
         wordMeaning.getEngine().loadContent(readSpecificRow(wordInput.getText()));
         historyList.getItems().add(wordInput.getText());
-        wordInput.clear();
+     //   wordInput.clear();
     }
 
 
@@ -111,6 +111,7 @@ public class Controller extends SQLite {
 
     @FXML
     void showAllWord() {
+
         listWord.getItems().clear();
         ArrayList<String> result = SQLite.showWordList(wordInput.getText());
         for (String word: result) {
@@ -129,6 +130,12 @@ public class Controller extends SQLite {
         ObservableList observableList = historyList.getSelectionModel().getSelectedItems();
     //    wordInput.setText((String) observableList.get(0));
         historyMean.getEngine().loadContent(readSpecificRow((String)observableList.get(0)));
+
+    }
+    @FXML
+    void playHistorySound() {
+        ObservableList observableList = historyList.getSelectionModel().getSelectedItems();
+        GoogleAPITextToSpeech play = new GoogleAPITextToSpeech((String)observableList.get(0));
 
     }
 

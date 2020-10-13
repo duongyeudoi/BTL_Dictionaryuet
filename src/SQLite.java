@@ -115,6 +115,22 @@ public class SQLite {
         return result;
     }
 
+    public static ArrayList<String> showAll() {
+        ArrayList<String> result = new ArrayList<>();
+        String sql = "SELECT word FROM av";
+        try (Connection conn = DbConnection.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            while (rs.next()) {
+                result.add(rs.getString("word"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return result;
+    }
+
+
 
 
     public static void main(String[] args) throws SQLException {
